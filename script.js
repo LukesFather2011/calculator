@@ -48,6 +48,12 @@ function operate(operator, num1, num2) {
 
 buttons.forEach(button => {
   button.addEventListener('click', () => {
-    console.log(`You pressed the ${button.innerHTML} button.`);
+    if (button.innerHTML === "AC") {
+        display.innerHTML = "";
+        
+    } else {
+        display.innerHTML += button.innerHTML;
+
+    }
   });
 });
