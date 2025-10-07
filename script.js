@@ -1,3 +1,7 @@
+const buttons = document.querySelectorAll(".button");
+const display = document.querySelector("#display");
+
+
 // Basic Functions or Calculation
 function add(a, b) {
     return a + b;
@@ -41,3 +45,9 @@ function operate(operator, num1, num2) {
             break;
     }
 };
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    console.log(`You pressed the ${button.innerHTML} button.`);
+  });
+});
