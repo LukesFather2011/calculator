@@ -11,6 +11,9 @@ body {
 }
 
 #calculatorContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     border: solid lightgray 2px;
     background-color: gray;
     height: 90vh;
@@ -20,6 +23,7 @@ body {
 
 #display {
     display: flex;
+    font-size: 40px;
     justify-self: center;
     margin-top: 20px;
     padding: 10px 0px 10px 0px;
@@ -30,3 +34,20 @@ body {
     background-color: black;
     color: white;
 }
+
+#row1, #row2, #row3, #row4, #row5 {
+    display: flex;
+}
+
+.button {
+    margin: 0px 10px 0px 10px;
+    font-size: 40px;
+    background-color: black;
+    color: white;
+    flex-grow: 1;
+}
+
+#AC {
+    flex-grow: 2;
+}
+
