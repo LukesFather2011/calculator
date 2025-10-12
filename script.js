@@ -21,29 +21,29 @@ function divide(a, b) {
 
 
 // for the calculator display in html
-let firstNumber  = NaN;
-let secondNumber = NaN;
+let num1  = NaN;
+let num2 = NaN;
 let operator     = "";
 let total        = NaN;
 
 
-function operate(operator, num1, num2) {
+function operate(operator, a, b) {
     // all the operations of the calculator, updates total variable
     switch (operator) {
         case "+":
-            total = add(num1, num2);
+            total = add(a, b);
             break;
 
         case "-":
-            total = subtract(num1, num2);
+            total = subtract(a, b);
             break;
 
         case "*":
-            total = multiply(num1, num2);
+            total = multiply(a, b);
             break;
 
         case "/":
-            total = divide(num1, num2);
+            total = divide(a, b);
             break;
     }
 };
@@ -60,9 +60,23 @@ function clearCalculator() {
 
 
 function getOperator(displayContent, buttonPressed) {
+    // stores operator for use in operate().
     num1 = Number(displayContent);
     operator = buttonPressed;
     return operator;
+}
+
+
+function checkForPairOfNums(a, b) {
+    if (a === NaN) {
+        return 0;
+
+    } else if (b === NaN) {
+        return 0;
+
+    } else {
+        performCalculation();
+    }
 }
 
 
@@ -95,6 +109,7 @@ function Main() {
 
             // Get the operator and show on display
             } else if (operationList.includes(button.innerHTML)) {
+                // checkForPairOfNums(num1, num2);
                 operator = getOperator(display.innerHTML, button.innerHTML);
                 display.innerHTML += " " + operator + " ";
 
