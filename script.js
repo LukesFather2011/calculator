@@ -21,10 +21,10 @@ function divide(a, b) {
 
 
 // for the calculator display in html
-let num1  = NaN;
-let num2 = NaN;
-let operator     = "";
-let total        = NaN;
+let num1        = NaN;
+let num2        = NaN;
+let operator    = "";
+let total       = NaN;
 
 
 function operate(operator, a, b) {
@@ -67,19 +67,6 @@ function getOperator(displayContent, buttonPressed) {
 }
 
 
-function checkForPairOfNums(a, b) {
-    if (a === NaN) {
-        return 0;
-
-    } else if (b === NaN) {
-        return 0;
-
-    } else {
-        performCalculation();
-    }
-}
-
-
 function performCalculation() {
     // Ensures num1 and operator don't show in string so number can be extrated for num2
     let startIndexForNum2String = display.innerHTML.indexOf(operator) + 1; 
@@ -109,7 +96,6 @@ function Main() {
 
             // Get the operator and show on display
             } else if (operationList.includes(button.innerHTML)) {
-                // checkForPairOfNums(num1, num2);
                 operator = getOperator(display.innerHTML, button.innerHTML);
                 display.innerHTML += " " + operator + " ";
 
