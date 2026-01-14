@@ -13,4 +13,21 @@ body {
     height: 75vh;
     width: 30vw;
     border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
+
+#display, #row1, #row2, #row3, #row4, #row5 {
+    background-color: #F6F3C2;
+    height: 10%;
+    width: 70%;
+    border: 2px solid black;
+}
+
+#display {
+    height: 20%;
+    border-radius: 30px;
+}
+
