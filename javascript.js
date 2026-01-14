@@ -14,3 +14,27 @@ function multiply(a, b) {
 function divide(a, b) {
     return a / b;
 }
+
+
+function operate(operator, num1, num2) {
+    // calls one of the above calculator functions to calculate the result. 
+    if (operator === "+") {
+        console.log(add(num1, num2));
+
+    } else if (operator === "-") {
+        console.log(subtract(num1, num2));
+
+    } else if (operator === "*") {
+        console.log(multiply(num1, num2));
+
+    } else {
+        console.log(divide(num1, num2));
+
+    }
+
+}
+
+operate("+", 1, 2);
+operate("-", 5, 2);
+operate("*", 6, 2);
+operate("/", 12, 2);
