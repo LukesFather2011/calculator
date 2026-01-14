@@ -19,7 +19,7 @@ body {
     align-items: center;
 }
 
-#display, #row1, #row2, #row3, #row4, #row5 {
+#display, .row {
     background-color: #F6F3C2;
     height: 10%;
     width: 70%;
@@ -29,5 +29,11 @@ body {
 #display {
     height: 20%;
     border-radius: 30px;
+}
+
+.btn {
+    background-color: #91C6BC;
+    color: #F6F3C2;
+    font-size: 25pt;
 }
 
