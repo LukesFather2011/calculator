@@ -28,7 +28,27 @@ body {
     background-color: #F6F3C2;
     height: 20%;
     border: 2px solid black;
-    border-radius: 30px;
+    border-radius: 30px;  
+
+    /* style the inputs inside the display */
+    display: flex;
+    flex-direction: column;
+}
+
+#currentInput, #previousInput {
+    flex: 1;
+}
+
+#currentInput {
+    text-align: center;
+    font-size: 50pt;
+    font-weight: bold;
+}
+
+#previousInput {
+    text-align: right;
+    font-size: 20pt;
+    padding-right: 30px;
 }
 
 .row {
