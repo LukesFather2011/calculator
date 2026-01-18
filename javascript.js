@@ -1,6 +1,7 @@
 // variables
 const currentDisplayInput  = document.querySelector("#currentInput");
 const previousDisplayInput = document.querySelector("#previousInput");
+const clearButton          = document.querySelector("#acButton");
 
 // calculator functions
 function add(a, b) {
@@ -37,3 +38,9 @@ function operate(operator, num1, num2) {
     }
 
 }
+
+function clearInput() {
+    currentDisplayInput.textContent = "";
+    previousDisplayInput.textContent = "";
+}
+
