@@ -69,9 +69,13 @@ function operate(operator, num1, num2) {
 
             } else if (button.textContent === "AC") {
 
-                // for AC button
-                num1 = "";
-                currentDisplayInput.textContent = num1;
+                // clears all inputs and variables
+                num1        = "";
+                num2        = "";
+                operator    = "";
+                temp        = "";
+                currentDisplayInput.textContent  = "";
+                previousDisplayInput.textContent = "";
             }
         })
     }
