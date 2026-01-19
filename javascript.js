@@ -2,6 +2,11 @@
 const currentDisplayInput  = document.querySelector("#currentInput");
 const previousDisplayInput = document.querySelector("#previousInput");
 const clearButton          = document.querySelector("#acButton");
+const buttons              = document.querySelectorAll(".btn");
+
+let num1;
+let num2;
+let temp;
 
 // calculator functions
 function add(a, b) {
@@ -37,10 +42,18 @@ function operate(operator, num1, num2) {
 
     }
 
+
+}function buttonPress() {
+    for (const button of buttons) {
+        button.addEventListener("click", (e) => {
+            console.log(`You have pressed the ${button.textContent} button`)
+        })
+    }
 }
 
-function clearInput() {
-    currentDisplayInput.textContent = "";
-    previousDisplayInput.textContent = "";
+
+function main() {
+    buttonPress();
 }
 
+main();
