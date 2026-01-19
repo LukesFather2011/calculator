@@ -4,9 +4,10 @@ const previousDisplayInput = document.querySelector("#previousInput");
 const clearButton          = document.querySelector("#acButton");
 const buttons              = document.querySelectorAll(".btn");
 
-let num1;
-let num2;
-let temp;
+const numList = "1234567890";
+let num1 = "";
+let num2 = "";
+let temp = "";
 
 // calculator functions
 function add(a, b) {
@@ -46,7 +47,10 @@ function operate(operator, num1, num2) {
 }function buttonPress() {
     for (const button of buttons) {
         button.addEventListener("click", (e) => {
-            console.log(`You have pressed the ${button.textContent} button`)
+            console.log(`The ${button.textContent} button ${
+                numList.includes(button.textContent) ? "contains" : "does not contain"
+            } a number.`
+            )
         })
     }
 }
