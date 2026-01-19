@@ -3,11 +3,14 @@ const currentDisplayInput  = document.querySelector("#currentInput");
 const previousDisplayInput = document.querySelector("#previousInput");
 const clearButton          = document.querySelector("#acButton");
 const buttons              = document.querySelectorAll(".btn");
+const numList   = "1234567890";
+const opList    = "+-*/"
 
-const numList = "1234567890";
-let num1 = "";
-let num2 = "";
-let temp = "";
+let num1        = "";
+let num2        = "";
+let temp        = "";
+let operator    = "";
+
 
 // calculator functions
 function add(a, b) {
@@ -54,6 +57,10 @@ function operate(operator, num1, num2) {
                 console.log(num1);
 
                 currentDisplayInput.textContent = num1;
+
+            } else if (opList.includes(button.textContent)) {
+                operator = button.textContent;
+                console.log(operator);
 
             } else if (button.textContent === "AC") {
 
