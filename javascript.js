@@ -44,28 +44,21 @@ function operate(operator, num1, num2) {
     }
 
 
-// working through the function to get the numbers to populate in the variables and on display
-// see below, differentiated num and not num keys. Use below as a reference. 
-
-// }function buttonPress() {
-//     for (const button of buttons) {
-//         button.addEventListener("click", (e) => {
-//             console.log(`The ${button.textContent} button ${
-//                 numList.includes(button.textContent) ? "contains" : "does not contain"
-//             } a number.`
-//             )
-//         })
-//     }
-// }
-
-
 }function buttonPress() {
     for (const button of buttons) {
         button.addEventListener("click", (e) => {
+            
+            // for number buttons
             if (numList.includes(button.textContent)) {
                 num1 += button.textContent;
                 console.log(num1);
 
+                currentDisplayInput.textContent = num1;
+
+            } else if (button.textContent === "AC") {
+
+                // for AC button
+                num1 = "";
                 currentDisplayInput.textContent = num1;
             }
         })
