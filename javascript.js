@@ -53,13 +53,18 @@ function operate(operator, num1, num2) {
             
             // for number buttons
             if (numList.includes(button.textContent)) {
-                num1 += button.textContent;
-                console.log(num1);
-
-                currentDisplayInput.textContent = num1;
+                temp += button.textContent;
+                currentDisplayInput.textContent += button.textContent;
+                //debugging
+                console.log(temp);
 
             } else if (opList.includes(button.textContent)) {
                 operator = button.textContent;
+                currentDisplayInput.textContent += ` ${operator} `;
+                //wipes temp variable for second number input
+                num1 = temp;
+                temp = "";
+                //debugging
                 console.log(operator);
 
             } else if (button.textContent === "AC") {
