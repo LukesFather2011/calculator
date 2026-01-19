@@ -43,6 +43,7 @@ body {
     text-align: center;
     font-size: 50pt;
     font-weight: bold;
+    padding-bottom: 40px;
 }
 
 #previousInput {
