@@ -74,7 +74,8 @@ function buttonPress() {
                 solution = operate(operator, num1, num2);
                 // to keep the calculations going. 
                 temp = solution; 
-                currentDisplayInput.textContent = solution;
+                //round decimal to 6 places, but keep actual value stored in temp for more precise calculations. 
+                currentDisplayInput.textContent = solution.toFixed(6);
                 
 
             } else if (button.textContent === "AC") {
