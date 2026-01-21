@@ -11,6 +11,8 @@ let num2        = "";
 let temp        = "";
 let operator    = "";
 let solution    = "";
+// Keep track of steps in calculation (null, step 1, step 2)
+let step        = "null";
 
 
 // calculator functions
@@ -60,22 +62,33 @@ function buttonPress() {
 
             } else if (opList.includes(button.textContent)) {
                 operator = button.textContent;
+                step = "step 1";
                 currentDisplayInput.textContent += ` ${operator} `;
 
                 //wipes temp variable for second number input
                 num1 = parseInt(temp);
                 temp = "";
+                step = "step 2";
 
             } else if (button.textContent === "=") {
-                num2 = parseInt(temp);
-                temp = "";
-                previousDisplayInput.textContent = currentDisplayInput.textContent;
-                
-                solution = operate(operator, num1, num2);
-                // to keep the calculations going. 
-                temp = solution; 
-                //round decimal to 6 places, but keep actual value stored in temp for more precise calculations. 
-                currentDisplayInput.textContent = solution.toFixed(6);
+                if (step === "null") {
+                    // pass
+
+                } else if (step === "step 1" && num1 === "" && operator === "") {
+                    // pass
+
+                } else {
+                    num2 = parseInt(temp);
+                    temp = "";
+                    previousDisplayInput.textContent = currentDisplayInput.textContent;
+                    
+                    solution = operate(operator, num1, num2);
+                    // to keep the calculations going. 
+                    temp = solution; 
+                    //round decimal to 6 places, but keep actual value stored in temp for more precise calculations. 
+                    currentDisplayInput.textContent = solution.toFixed(6); 
+
+                }
                 
 
             } else if (button.textContent === "AC") {
@@ -85,6 +98,7 @@ function buttonPress() {
                 num2        = "";
                 operator    = "";
                 temp        = "";
+                step        = "null"
                 currentDisplayInput.textContent  = "";
                 previousDisplayInput.textContent = "";
             }
