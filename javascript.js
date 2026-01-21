@@ -57,32 +57,23 @@ function buttonPress() {
             if (numList.includes(button.textContent)) {
                 temp += button.textContent;
                 currentDisplayInput.textContent += button.textContent;
-                //debugging
-                console.log(temp);
-                //debug end
 
             } else if (opList.includes(button.textContent)) {
                 operator = button.textContent;
-                //debugging
-                console.log(`The operator variable holds ${operator}, and it is type ${typeof(operator)}`)
-                //debug end
                 currentDisplayInput.textContent += ` ${operator} `;
+
                 //wipes temp variable for second number input
                 num1 = parseInt(temp);
                 temp = "";
-                //debugging
-                console.log(`num1 is holding the number ${num1} and it is of type ${typeof(num1)}`)
-                //debug end
 
             } else if (button.textContent === "=") {
                 num2 = parseInt(temp);
                 temp = "";
-                previousDisplayInput.textContent = currentDisplayInput;
-                //debugging
-                console.log(`num2 is holding the number ${num2} and it is of type ${typeof(num2)}`)
-                //debug end
+                previousDisplayInput.textContent = currentDisplayInput.textContent;
+                
                 solution = operate(operator, num1, num2);
-                console.log(`The value of solution is ${solution} and it's type: ${typeof(solution)}`);
+                currentDisplayInput.textContent = solution;
+                
 
             } else if (button.textContent === "AC") {
 
