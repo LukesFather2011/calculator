@@ -72,6 +72,8 @@ function buttonPress() {
                 previousDisplayInput.textContent = currentDisplayInput.textContent;
                 
                 solution = operate(operator, num1, num2);
+                // to keep the calculations going. 
+                temp = solution; 
                 currentDisplayInput.textContent = solution;
                 
 
