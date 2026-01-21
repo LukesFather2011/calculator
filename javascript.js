@@ -10,6 +10,7 @@ let num1        = "";
 let num2        = "";
 let temp        = "";
 let operator    = "";
+let solution    = "";
 
 
 // calculator functions
@@ -33,21 +34,22 @@ function divide(a, b) {
 function operate(operator, num1, num2) {
     // calls one of the above calculator functions to calculate the result. 
     if (operator === "+") {
-        console.log(add(num1, num2));
+        return add(num1, num2);
 
     } else if (operator === "-") {
-        console.log(subtract(num1, num2));
+        return subtract(num1, num2);
 
     } else if (operator === "*") {
-        console.log(multiply(num1, num2));
+        return multiply(num1, num2);
 
     } else {
-        console.log(divide(num1, num2));
+        return divide(num1, num2);
 
     }
+}
 
 
-}function buttonPress() {
+function buttonPress() {
     for (const button of buttons) {
         button.addEventListener("click", (e) => {
             
@@ -57,15 +59,30 @@ function operate(operator, num1, num2) {
                 currentDisplayInput.textContent += button.textContent;
                 //debugging
                 console.log(temp);
+                //debug end
 
             } else if (opList.includes(button.textContent)) {
                 operator = button.textContent;
+                //debugging
+                console.log(`The operator variable holds ${operator}, and it is type ${typeof(operator)}`)
+                //debug end
                 currentDisplayInput.textContent += ` ${operator} `;
                 //wipes temp variable for second number input
-                num1 = temp;
+                num1 = parseInt(temp);
                 temp = "";
                 //debugging
-                console.log(operator);
+                console.log(`num1 is holding the number ${num1} and it is of type ${typeof(num1)}`)
+                //debug end
+
+            } else if (button.textContent === "=") {
+                num2 = parseInt(temp);
+                temp = "";
+                previousDisplayInput.textContent = currentDisplayInput;
+                //debugging
+                console.log(`num2 is holding the number ${num2} and it is of type ${typeof(num2)}`)
+                //debug end
+                solution = operate(operator, num1, num2);
+                console.log(`The value of solution is ${solution} and it's type: ${typeof(solution)}`);
 
             } else if (button.textContent === "AC") {
 
