@@ -11,7 +11,7 @@ let num2        = "";
 let temp        = "";
 let operator    = "";
 let solution    = "";
-// Keep track of steps in calculation (null, step 1, step 2)
+// Keep track of steps in calculation (step 0, step 1, step 2)
 let step        = "step 0";
 
 
@@ -30,6 +30,13 @@ function multiply(a, b) {
 
 function divide(a, b) {
     return a / b;
+}
+
+
+function roundMaxDecimals(value, decimals = 6) {
+    // rounds the number and then adds the proper amount of decimals up to 6 to not overload display.
+    const factor = 10 ** decimals;
+    return Math.round((value + Number.EPSILON) * factor) / factor;
 }
 
 
@@ -89,8 +96,7 @@ function buttonPress() {
                     // to keep the calculations going. 
                     temp = solution; 
                     //round decimal to 6 places, but keep actual value stored in temp for more precise calculations. 
-                    currentDisplayInput.textContent = solution.toFixed(6); 
-
+                    currentDisplayInput.textContent = roundMaxDecimals(solution, 6); 
                 }
                 
 
