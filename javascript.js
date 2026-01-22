@@ -93,10 +93,21 @@ function buttonPress() {
                     previousDisplayInput.textContent = currentDisplayInput.textContent;
                     
                     solution = operate(operator, num1, num2);
-                    // to keep the calculations going. 
-                    temp = solution; 
-                    //round decimal to 6 places, but keep actual value stored in temp for more precise calculations. 
-                    currentDisplayInput.textContent = roundMaxDecimals(solution, 6); 
+                    
+
+                    //check to see if solution is a number divided by zero
+                    if (solution === Infinity) {
+                        currentDisplayInput.textContent = "Don't do that.";
+                        previousDisplayInput.textContent = "You know what you did :(";
+
+                    } else {
+                        // to keep the calculations going. 
+                        temp = solution; 
+
+                        //round decimal to 6 places, but keep actual value stored in temp for more precise calculations. 
+                        currentDisplayInput.textContent = roundMaxDecimals(solution, 6);  
+                    }
+ 
                 }
                 
 
