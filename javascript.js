@@ -12,7 +12,7 @@ let temp        = "";
 let operator    = "";
 let solution    = "";
 // Keep track of steps in calculation (null, step 1, step 2)
-let step        = "null";
+let step        = "step 0";
 
 
 // calculator functions
@@ -57,6 +57,10 @@ function buttonPress() {
             
             // for number buttons
             if (numList.includes(button.textContent)) {
+                // ensures when "=" is pressed before a second number is entered, nothing happens.
+                if (step === "step 1") {
+                    step = "step 2";
+                }
                 temp += button.textContent;
                 currentDisplayInput.textContent += button.textContent;
 
@@ -68,13 +72,12 @@ function buttonPress() {
                 //wipes temp variable for second number input
                 num1 = parseInt(temp);
                 temp = "";
-                step = "step 2";
 
             } else if (button.textContent === "=") {
-                if (step === "null") {
+                if (step === "step 0") {
                     // pass
 
-                } else if (step === "step 1" && num1 === "" && operator === "") {
+                } else if (step === "step 1") {
                     // pass
 
                 } else {
@@ -98,7 +101,7 @@ function buttonPress() {
                 num2        = "";
                 operator    = "";
                 temp        = "";
-                step        = "null"
+                step        = "step 0"
                 currentDisplayInput.textContent  = "";
                 previousDisplayInput.textContent = "";
             }

@@ -1,0 +1,11 @@
+21 Jan 26: 
+I finished adding functionality to the calculator. I was able to
+ get the display to update properly, as well. However, how I have to solve
+ how to stop forced decimal places.
+
+ I also am trying to solve what happens if the "=" is pressed to early. I've 
+ implemented a "step" variable that I am using to keep track of where the calculations
+ are at. However, I am having some difficulty implementing this. Basically, nothing should
+ happen if the "=" is pressed before the second number has been entered. 
+
+ 

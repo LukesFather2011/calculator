@@ -17,7 +17,6 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    box-shadow: #4B9DA9;
 }
 
 #display, .row {
