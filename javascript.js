@@ -72,28 +72,12 @@ function buttonPress() {
                 currentDisplayInput.textContent += button.textContent;
 
             } else if (opList.includes(button.textContent)) {
-                operator = button.textContent;
-                step = "step 1";
-                currentDisplayInput.textContent += ` ${operator} `;
-
-                //wipes temp variable for second number input
-                num1 = parseInt(temp);
-                temp = "";
-
-            } else if (button.textContent === "=") {
-                if (step === "step 0") {
-                    // pass
-
-                } else if (step === "step 1") {
-                    // pass
-
-                } else {
+                // check to see if operator as already been entered
+                if (operator != "" && temp != "") {
                     num2 = parseInt(temp);
                     temp = "";
                     previousDisplayInput.textContent = currentDisplayInput.textContent;
-                    
                     solution = operate(operator, num1, num2);
-                    
 
                     //check to see if solution is a number divided by zero
                     if (solution === Infinity) {
@@ -104,7 +88,44 @@ function buttonPress() {
                         // to keep the calculations going. 
                         temp = solution; 
 
-                        //round decimal to 6 places, but keep actual value stored in temp for more precise calculations. 
+                        //round decimal to 6 places, but keep actual value stored in temp for precise calculations. 
+                        currentDisplayInput.textContent = roundMaxDecimals(solution, 6);  
+                    }
+                    
+                }
+
+                operator = button.textContent;
+                step = "step 1";
+                currentDisplayInput.textContent += ` ${operator} `;
+
+                //wipes temp variable for second number input
+                num1 = parseInt(temp);
+                temp = "";
+
+            } else if (button.textContent === "=") {
+
+                if (step === "step 0") {  // nothing entered yet
+                    // pass
+
+                } else if (step === "step 1") {  // num 1 and operator are filled, but no second number entered
+                    // pass
+
+                } else {
+                    num2 = parseInt(temp);
+                    temp = "";
+                    previousDisplayInput.textContent = currentDisplayInput.textContent;
+                    solution = operate(operator, num1, num2);
+
+                    //check to see if solution is a number divided by zero
+                    if (solution === Infinity) {
+                        currentDisplayInput.textContent = "Don't do that.";
+                        previousDisplayInput.textContent = "You know what you did :(";
+
+                    } else {
+                        // to keep the calculations going. 
+                        temp = solution; 
+
+                        //round decimal to 6 places, but keep actual value stored in temp for precise calculations. 
                         currentDisplayInput.textContent = roundMaxDecimals(solution, 6);  
                     }
  
