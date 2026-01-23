@@ -1,3 +1,11 @@
+/* 
+For the purpose of keep track of where the calculations are at, I have established a step process:
+step 0 - No number has been stored to num1 or operator stored in operator variable
+step 1 - num 1 and operator variables now have stored values
+step 2 - at least a single digit of another number has been entered after hitting the operator
+step 3 - the solution from the previous evaluation has been presented on the screen
+*/
+
 // variables
 const currentDisplayInput  = document.querySelector("#currentInput");
 const previousDisplayInput = document.querySelector("#previousInput");
@@ -11,7 +19,6 @@ let num2        = "";
 let temp        = "";
 let operator    = "";
 let solution    = "";
-// Keep track of steps in calculation (step 0, step 1, step 2)
 let step        = "step 0";
 
 
@@ -71,37 +78,49 @@ function buttonPress() {
                 temp += button.textContent;
                 currentDisplayInput.textContent += button.textContent;
 
+            // Choosing and operator
             } else if (opList.includes(button.textContent)) {
-                // check to see if operator as already been entered
-                if (operator != "" && temp != "") {
+
+                if (step === "step 0") {
+                    operator = button.textContent;
+                    step = "step 1";
+                    currentDisplayInput.textContent += ` ${operator} `;
+
+                    //wipes temp variable for second number input
+                    num1 = parseInt(temp);
+                    temp = "";
+
+                } else if (step === "step 1") {
+                    // replace current operator
+                    operator = button.textContent;
+                    // update the display
+                    currentDisplayInput.textContent = `${num1} ${operator} `;
+
+                } else if (step === "step 2") {  
+                    // evaluates current pair and continues with picked operator
                     num2 = parseInt(temp);
                     temp = "";
                     previousDisplayInput.textContent = currentDisplayInput.textContent;
-                    solution = operate(operator, num1, num2);
+                    temp = operate(operator, num1, num2);
+                    currentDisplayInput.textContent = `${roundMaxDecimals(temp, 6)} ${operator} `;
 
-                    //check to see if solution is a number divided by zero
-                    if (solution === Infinity) {
+                    // set up step 1 again
+                    num1 = temp;
+                    num2 = "";
+                    temp = "";
+                    operator = button.textContent;
+                    step = "step 1";
+
+
+                    // check to see if solution is a number divided by zero
+                    if (temp === Infinity) {
                         currentDisplayInput.textContent = "Don't do that.";
                         previousDisplayInput.textContent = "You know what you did :(";
 
-                    } else {
-                        // to keep the calculations going. 
-                        temp = solution; 
-
-                        //round decimal to 6 places, but keep actual value stored in temp for precise calculations. 
-                        currentDisplayInput.textContent = roundMaxDecimals(solution, 6);  
-                    }
-                    
+                    } 
                 }
 
-                operator = button.textContent;
-                step = "step 1";
-                currentDisplayInput.textContent += ` ${operator} `;
-
-                //wipes temp variable for second number input
-                num1 = parseInt(temp);
-                temp = "";
-
+            // Evalulte the expression
             } else if (button.textContent === "=") {
 
                 if (step === "step 0") {  // nothing entered yet
@@ -111,34 +130,37 @@ function buttonPress() {
                     // pass
 
                 } else {
+                    // evaluates current pair and continues with picked operator
                     num2 = parseInt(temp);
                     temp = "";
                     previousDisplayInput.textContent = currentDisplayInput.textContent;
-                    solution = operate(operator, num1, num2);
+                    temp = operate(operator, num1, num2);
+                    currentDisplayInput.textContent = `${roundMaxDecimals(temp, 6)}`;
 
-                    //check to see if solution is a number divided by zero
-                    if (solution === Infinity) {
+                    // set up step 1 again
+                    num1 = temp;
+                    num2 = "";
+                    temp = "";
+                    operator = button.textContent;
+                    step = "step 1";
+
+
+                    // check to see if solution is a number divided by zero
+                    if (temp === Infinity) {
                         currentDisplayInput.textContent = "Don't do that.";
-                        previousDisplayInput.textContent = "You know what you did :(";
-
-                    } else {
-                        // to keep the calculations going. 
-                        temp = solution; 
-
-                        //round decimal to 6 places, but keep actual value stored in temp for precise calculations. 
-                        currentDisplayInput.textContent = roundMaxDecimals(solution, 6);  
+                        previousDisplayInput.textContent = "You know what you did :("; 
                     }
  
                 }
                 
 
+            // All Clear Button
             } else if (button.textContent === "AC") {
-
-                // clears all inputs and variables
                 num1        = "";
                 num2        = "";
                 operator    = "";
                 temp        = "";
+                solution    = "";
                 step        = "step 0"
                 currentDisplayInput.textContent  = "";
                 previousDisplayInput.textContent = "";
