@@ -9,3 +9,7 @@ I finished adding functionality to the calculator. I was able to
  happen if the "=" is pressed before the second number has been entered. 
 
  
+ 22 Jan 26:
+ Accomplished what I set out to do yesterday, and also added a message when a number is divided by zero.
+ Next I want to make sure that the numbers evaluate only a pair. right now if I enter 3 numbers, it only evaluates
+ the final pair. 
