@@ -172,10 +172,32 @@ function buttonPress() {
                     if (temp === "") {
                         temp = "0.";
                         currentDisplayInput.textContent = temp;
+
+                    } else if (temp.includes(".")) {
+                        //pass
+
+                    } else {
+                        temp += button.textContent;
+                        currentDisplayInput.textContent += button.textContent;
+
+                    }
+                    
+                } else {
+                    // If no digit has been entered at all
+                    if (temp === "") {
+                        temp = "0.";
+                        currentDisplayInput.textContent = `${num1} ${operator} ${temp}`;
+
+                    } else if (temp.includes(".")) {
+                        //pass
+
+                    } else {
+                        temp += button.textContent;
+                        currentDisplayInput.textContent += button.textContent;
+
                     }
 
                 }
-
             }
         })
     }
