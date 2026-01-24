@@ -3,7 +3,6 @@ For the purpose of keep track of where the calculations are at, I have establish
 step 0 - No number has been stored to num1 or operator stored in operator variable
 step 1 - num 1 and operator variables now have stored values
 step 2 - at least a single digit of another number has been entered after hitting the operator
-step 3 - the solution from the previous evaluation has been presented on the screen
 */
 
 // variables
@@ -87,7 +86,7 @@ function buttonPress() {
                     currentDisplayInput.textContent += ` ${operator} `;
 
                     //wipes temp variable for second number input
-                    num1 = parseInt(temp);
+                    num1 = parseFloat(temp);
                     temp = "";
 
                 } else if (step === "step 1") {
@@ -98,7 +97,7 @@ function buttonPress() {
 
                 } else if (step === "step 2") {  
                     // evaluates current pair and continues with picked operator
-                    num2 = parseInt(temp);
+                    num2 = parseFloat(temp);
                     temp = "";
                     previousDisplayInput.textContent = currentDisplayInput.textContent;
                     temp = operate(operator, num1, num2);
@@ -131,7 +130,7 @@ function buttonPress() {
 
                 } else {
                     // evaluates current pair and continues with picked operator
-                    num2 = parseInt(temp);
+                    num2 = parseFloat(temp);
                     temp = "";
                     previousDisplayInput.textContent = currentDisplayInput.textContent;
                     temp = operate(operator, num1, num2);
@@ -150,9 +149,8 @@ function buttonPress() {
                         currentDisplayInput.textContent = "Don't do that.";
                         previousDisplayInput.textContent = "You know what you did :("; 
                     }
- 
                 }
-                
+
 
             // All Clear Button
             } else if (button.textContent === "AC") {
@@ -164,6 +162,20 @@ function buttonPress() {
                 step        = "step 0"
                 currentDisplayInput.textContent  = "";
                 previousDisplayInput.textContent = "";
+
+
+            // Decimal Button
+            } else if (button.textContent === ".") {
+                
+                if (step === "step 0") {
+                    // If no digit has been entered at all
+                    if (temp === "") {
+                        temp = "0.";
+                        currentDisplayInput.textContent = temp;
+                    }
+
+                }
+
             }
         })
     }
