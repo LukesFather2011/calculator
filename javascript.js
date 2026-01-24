@@ -181,7 +181,7 @@ function buttonPress() {
                         currentDisplayInput.textContent += button.textContent;
 
                     }
-                    
+
                 } else {
                     // If no digit has been entered at all
                     if (temp === "") {
@@ -196,8 +196,28 @@ function buttonPress() {
                         currentDisplayInput.textContent += button.textContent;
 
                     }
-
                 }
+
+
+            // Backspace Button
+            } else if (button.textContent === "<=") {
+                let newTemp = temp.slice(0, -1);
+                temp = newTemp;
+
+                if (step === "step 0" ) {
+                    currentDisplayInput.textContent = temp;
+
+                } else {
+                    currentDisplayInput.textContent = `${num1} ${operator} ${temp}`;
+
+                    // to fix an error of NaN when clearing out the second number.
+                    // because after entering first digit of 2nd number, it auto swithces to step 2
+                    if (step === "step 2" && temp === "") { 
+                        step = "step 1";
+                    }
+                    
+
+                } 
             }
         })
     }
